@@ -9,6 +9,7 @@ public class Main {
 		
 		int count = 0;
 		
+		// 반복문의 범위를 어떻게 설정해주어야 하나?
 		for(int i = 0; i <= Integer.MAX_VALUE; i++) {
 			String number = i + "";
 			
