@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Main {
@@ -25,7 +27,7 @@ public class Main {
 		// 모든 visited 경우에 관해 DFS 실행, DFS가 실행되는 만큼 count
 		for(int i = 1; i <= V; i++) {
 			if(visited[i]==false) {
-				DFS(i);
+				BFS(i);
 				count++;
 			}
 		}
@@ -33,16 +35,27 @@ public class Main {
 		System.out.println(count);
 	}
 
-	private static void DFS(int start) {
-		visited[start] = true;
-		//System.out.print(start + " ");
+	private static void BFS(int v) {
+		Queue<Integer> queue = new LinkedList<>();
 		
-		for(int i = 1; i <= V; i++) {
-			if(visited[i]==false && adj[start][i]==1) {
-				DFS(i);
+		queue.add(v);
+		visited[v] = true;
+		
+		while(!queue.isEmpty()) {
+			
+			int curr = queue.poll();
+			
+			for(int i = 1; i <= V; i++) {
+				if(adj[curr][i] == 1 && visited[i] == false) {
+					queue.add(i);
+					visited[i] = true;
+				}
 			}
+			
 		}
 		
 		
+		
 	}
+
 }
